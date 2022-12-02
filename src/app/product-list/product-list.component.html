@@ -1,0 +1,24 @@
+<h2>Products</h2>
+<!-- 模板里用的for循环 使用let of做循环体 -->
+<div *ngFor="let product of products">
+  <h3>
+    <!-- [title] html元素-->
+    <!-- [routerLink] 路由链接 第一个参数是路径，需要在AppModule里定义好，另一个是携带的参数 -->
+    <a
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]"
+      >{{ product.name }}
+    </a>
+  </h3>
+  <!-- 普通的if判断 -->
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+  <!-- 绑定点击事件 -->
+  <button type="button" (click)="share()">Share</button>
+  <!-- 引入组件 -->
+  <!-- [product] 组件定义的Input 也就是需要传入的参数 -->
+  <!-- [notify] 组件定义的Output 也就是暴露出来的方法 -->
+  <app-product-alerts
+    [product]="product"
+    (notify)="onNotify()"
+  ></app-product-alerts>
+</div>
