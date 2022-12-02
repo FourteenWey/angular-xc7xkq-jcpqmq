@@ -1,0 +1,7 @@
+<h3>Cart</h3>
+
+<div class="cart-item" *ngFor="let item of list">
+  <span> {{ item.name }}</span>
+  <!-- currency 是管道 -->
+  <span> {{ item.price | currency }}</span>
+</div>
